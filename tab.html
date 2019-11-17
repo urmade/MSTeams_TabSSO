@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <script src='https://statics.teams.microsoft.com/sdk/v1.2/js/MicrosoftTeams.min.js'></script>
+</head>
+
+<body>
+    <script>
+        microsoftTeams.initialize();
+
+        var authTokenRequest = {
+            successCallback: function (result) {
+                fetch("/storeToken?token=" + result);
+            },
+            failureCallback: function (error) { console.log("Failure: " + error); },
+        };
+        microsoftTeams.authentication.getAuthToken(authTokenRequest);
+
+    </script>
+</body>
+
+</html>
